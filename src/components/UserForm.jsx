@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const UserForm = ({ sendData }) => {
-  const [user, setUser] = useState([]);
+ 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
@@ -9,8 +9,6 @@ const UserForm = ({ sendData }) => {
     e.preventDefault();
     const newUser = { name, email };
     const updatedUsers = [...user, newUser];
-
-    setUser(updatedUsers); // ✅ update state
     sendData(updatedUsers);
     setName("");
     setEmail("");
