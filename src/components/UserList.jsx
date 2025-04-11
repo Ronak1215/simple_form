@@ -5,7 +5,7 @@ const UserList = ({ userData }) => {
   const bottomRef = useRef(null);
   useEffect(() => {
     if(bottomRef.current){
-      bottomRef.current.scrollIntoView();
+      bottomRef.current.scrollIntoView({ behavior: "smooth"});
     }
   }, [userData])
   
