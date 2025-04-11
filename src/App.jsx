@@ -7,7 +7,7 @@ function App() {
   const [userData, setUserData] = useState([])
 
   function handleDataForm(data) {
-    setUserData(data);
+    setUserData((prev)=>[...prev, data]);
   }
 
   return (

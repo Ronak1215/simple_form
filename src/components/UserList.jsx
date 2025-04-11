@@ -1,6 +1,14 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 
 const UserList = ({ userData }) => {
+  // console.log(userData)
+  const bottomRef = useRef(null);
+  useEffect(() => {
+    if(bottomRef.current){
+      bottomRef.current.scrollIntoView();
+    }
+  }, [userData])
+  
   return (
     <>
      {
@@ -11,6 +19,7 @@ const UserList = ({ userData }) => {
           </div>
         ))
       }
+      <div ref={bottomRef}></div>
     </>
     
   );
