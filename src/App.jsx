@@ -12,10 +12,12 @@ function App() {
 
   return (
     <>
+      <div className="flex flex-col gap-5">
       <h2 className="text-center text-5xl font-semibold mt-8">User Form</h2>
       <UserForm sendData={handleDataForm}/>
       <h2 className="text-center text-5xl font-semibold mt-8">User List</h2>
       <UserList userData={userData}/>
+      </div>
     </>
   );
 }
