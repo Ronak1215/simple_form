@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 const UserList = ({ userData }) => {
   // console.log(userData)
@@ -15,6 +15,12 @@ const UserList = ({ userData }) => {
     acc[domain] = (acc[domain] || 0) + 1;
     return acc;
   }, {});
+
+  const filteredUsers = useMemo(() => {
+    return userData.filter((user) =>
+      user.name.toLowerCase().includes(search.toLowerCase())
+    );
+  }, [userData, search]);
 
   return (
     <>
@@ -33,9 +39,9 @@ const UserList = ({ userData }) => {
         value={search}
         placeholder="SearchUser"
       />
-      {userData
-        .filter((user) => user.name.toLowerCase().includes(search.toLowerCase()))
-        .map((user, index) => (
+        
+      {
+        filteredUsers.map((user, index) => (
           <div
             key={index}
             className="w-96 m-auto p-4 mt-5 border border-gray-400 rounded-sm"
@@ -50,6 +56,7 @@ const UserList = ({ userData }) => {
             </p>
           </div>
         ))}
+
       {/* {userData.length > 0 && search.length === 0 && (
         <p className="text-center text-gray-500">No users found.</p>
       )} */}
